@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user
+  
 
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     redirect_to("/posts/index")
   end
 
-  
+
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if @post.user_id != @current_user.id
